@@ -6,7 +6,7 @@ export default function Contacts(props) {
         <div>
             <div>
                 {props.allContacts.map((contact, index)=>(
-              <ContactItem contact={contact}/>))}
+              <ContactItem handleUpdateContact={props.handleUpdateContact} contact={contact} delete={props.delete}/>))}
             </div>
         </div>
     )

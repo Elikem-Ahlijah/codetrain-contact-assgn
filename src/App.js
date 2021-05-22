@@ -6,9 +6,25 @@ import ContactsForm from './Components/ContactsForm';
 function App() {
   const [contacts, setContacts] = useState([])
 
-    function handleAddContact  (contact){
-      setContacts([...contacts, contact])
+  function handleAddContact  (contact){
+    setContacts([...contacts, contact])
   }
+
+  function handleDeleteContact(id){
+    let newContacts = contacts.filter((contact)=>contact.id !==id);
+    setContacts(newContacts)
+  }
+
+  function handleUpdateContact(id, updatedContactInfo){
+    let newContacts = contacts.map((contact)=>{
+      if(contact.id == id){
+        return updatedContactInfo
+      }
+      return contact
+    })
+    setContacts(newContacts)
+  }
+
 
   return (
     <div className='container-flex'>
@@ -17,7 +33,7 @@ function App() {
           <ContactsForm handleAddContact={handleAddContact}/>
         </div>
         <div className='col-md-6'>
-          <Contacts allContacts={contacts}/>
+          <Contacts allContacts={contacts} delete={handleDeleteContact} handleUpdateContact={handleUpdateContact}/>
         </div>
       </div>
     </div>
