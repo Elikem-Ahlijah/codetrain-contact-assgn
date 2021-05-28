@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-export default class ContactsForm extends Component {
+import {addContact} from '../actions/contactActions';
+import {connect}  from 'react-redux'
+
+class ContactsForm extends Component {
     constructor(props){
         super(props);
 
@@ -23,7 +26,7 @@ export default class ContactsForm extends Component {
     // // this.setState({ contacts: [...this.state.users, newContact]})
     let contactId = 10000 + Math.random()*10000000;
     let contact = {...this.state, id: contactId}
-    this.props.handleAddContact(contact)
+    this.props.addNewContact(contact)
 
 }
 
@@ -51,3 +54,7 @@ export default class ContactsForm extends Component {
         )
     }
 }
+
+const mapDispatchToProps = {addNewContact: addContact}
+
+export default connect(null, mapDispatchToProps) (ContactsForm);

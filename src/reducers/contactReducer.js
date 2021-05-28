@@ -1,12 +1,14 @@
 const initalState = {
-    contacts:[{name:'Elikem', contactId:'hfjfi464647', gender:'male'}]
+    contacts:[]
 }
 
 
 
 const contactReducer = (state=initalState, action) => {
     switch (action.type) {
-        case 'ADD-CONTACT':
+        case 'ADD_CONTACT':
+            console.log(action.payload)
+            return {...state, contacts: [...state.contacts, action.payload]}
             
             break;
     

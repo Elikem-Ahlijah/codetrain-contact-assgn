@@ -17,7 +17,7 @@ function App() {
 
   function handleUpdateContact(id, updatedContactInfo){
     let newContacts = contacts.map((contact)=>{
-      if(contact.id == id){
+      if(contact.id === id){
         return updatedContactInfo
       }
       return contact
