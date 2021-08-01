@@ -1,21 +1,29 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ContactItem from './ContactItem';
 
 import {connect} from 'react-redux';
+import {getAllContacts} from '../actions/contactActions'
 
 function Contacts(props) {
+    useEffect(() => {
+        props.getAllContacts()
+    }, [])
     return (
         <div>
-            <div>
-                {props.contactsData.map((contact, index)=>(
-              <ContactItem handleUpdateContact={props.handleUpdateContact} contact={contact} delete={props.delete}/>))}
-            </div>
+            
+                {props.contactsData.map((contact)=>(
+              <ContactItem  contact={contact} />))}
+            
         </div>
-    )
+    );
 }
 
 function mapStateToProps (state) {
-    return {contactsData: state.contacts}
+    return {contactsData: state.contactState.contacts}
 }
 
-export default connect(mapStateToProps)(Contacts);
+const mapDispatchToProps = {
+    getAllContacts,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);

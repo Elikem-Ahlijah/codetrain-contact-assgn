@@ -2,7 +2,10 @@ import React, {useState} from 'react';
 import { Modal } from 'react-bootstrap';
 import EditContactForm from './EditContactForm';
 
-export default function ContactItem(props) {
+import { deleteContact } from '../actions/contactActions';
+import { connect } from 'react-redux';
+
+function ContactItem(props) {
     const [isModalVisible, setShowModal]=useState(false)
 
     function showModal(){
@@ -30,9 +33,15 @@ export default function ContactItem(props) {
                     <EditContactForm hideModal={hideModal} contact={props.contact} handleUpdateContact={props.handleUpdateContact}/>
                 </Modal.Body>
                 </Modal>
-            <button className='btn btn-danger button' onClick={()=>props.delete(props.contact.id)}>Delete</button>
+            <button className='btn btn-danger button' onClick={()=>props.deleteContact(props.contact.id)}>Delete</button>
             </div> 
         </div>
         
     )
 }
+
+let mapDispatchToProps = { deleteContact };
+
+let mapStateToProps = () => {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactItem)

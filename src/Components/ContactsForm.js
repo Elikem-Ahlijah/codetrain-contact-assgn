@@ -48,7 +48,7 @@ class ContactsForm extends Component {
                 <input type="text" value={this.state.location} name="location" onChange={this.handleonChange}></input>
             </div>
 
-            <button type="button" onClick={this.handleonSubmit}>Create User</button>
+            <button type="button" onClick={this.handleonSubmit}>Create Contact</button>
                 
             </div>
         )

@@ -1,56 +1,23 @@
-import './App.css';
-import React, { useState } from 'react';
-import Contacts from './Components/Contacts';
-import ContactsForm from './Components/ContactsForm';
+import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import display from "./pages/display";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 function App() {
-  const [contacts, setContacts] = useState([])
-
-  function handleAddContact  (contact){
-    setContacts([...contacts, contact])
-  }
-
-  function handleDeleteContact(id){
-    let newContacts = contacts.filter((contact)=>contact.id !==id);
-    setContacts(newContacts)
-  }
-
-  function handleUpdateContact(id, updatedContactInfo){
-    let newContacts = contacts.map((contact)=>{
-      if(contact.id === id){
-        return updatedContactInfo
-      }
-      return contact
-    })
-    setContacts(newContacts)
-  }
-
-
   return (
-    <div className='container-flex'>
-      <div className='row form'>
-        <div className='col-md-6'>
-          <ContactsForm handleAddContact={handleAddContact}/>
-        </div>
-        <div className='col-md-6'>
-          <Contacts allContacts={contacts} delete={handleDeleteContact} handleUpdateContact={handleUpdateContact}/>
-        </div>
-      </div>
+    <div className="container-flex">
+      <BrowserRouter>
+        <Switch>
+          <ProtectedRoute exact path="/" component={display} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+        </Switch>
+      </BrowserRouter>
     </div>
-  )
+  );
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // class App extends Component {
 //   constructor(props){
@@ -64,8 +31,7 @@ function App() {
 //     {name: 'Johnson',
 //     number: 23447,
 //     location: 'Abeka'}]
-    
-    
+
 //     // this.state={contacts}
 //   }
 //   render() {
@@ -76,8 +42,5 @@ function App() {
 //     )
 //   }
 // }
-
-
-
 
 export default App;

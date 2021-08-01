@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {updateContact} from '../actions/contactActions';
+import { connect } from 'react-redux';
 
-export default class EditContactForm extends Component {
+class EditContactForm extends Component {
     constructor(props){
         super(props);
 
@@ -16,8 +18,8 @@ export default class EditContactForm extends Component {
         }
                     
     handleonSubmit=()=>{
-        let contact = {...this.state, id: this.props.contactId}
-        this.props.handleUpdateContact(this.props.contact.id, contact)
+        let contact = {...this.state, id: this.props.contact.id}
+        this.props.updateContact(this.props.contact.id, contact)
         this.props.hideModal()
                     
         }
@@ -48,3 +50,9 @@ export default class EditContactForm extends Component {
         )
     }
 }
+
+let mapDispatchToProps = { updateContact};
+
+let mapStateToProps = () => {}
+
+export default  connect(mapStateToProps ,mapDispatchToProps)(EditContactForm);
