@@ -31,11 +31,11 @@ function Login(props) {
 
     }
     return (
-        <div className='container-flex App'>
+        <div className='container-flex App form'>
              <Link to="/">Home</Link>
             <Link to="/login">Login</Link>
             <Link to="/signup">Signup</Link>
-           <div className='form'>
+           
            <div >
                 <label>Email</label><br></br>
                 <input type="text" value={credentials.email}  name="email" onChange={handleonChange}></input>
@@ -46,7 +46,7 @@ function Login(props) {
             </div>
 
             <button onClick={handleonSubmit}>Log in</button> 
-            </div>
+            
         </div>
     )
 }
