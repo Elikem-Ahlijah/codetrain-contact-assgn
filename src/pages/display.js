@@ -13,7 +13,7 @@ function display(props) {
     props.logout()
 }
     return (
-        <div className="container-flex">
+        <div className="container-flex App">
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
         <Link to="/signup">Signup</Link>

@@ -5,7 +5,7 @@
 .form {
   background-color: rgb(212, 245, 245);
   height: 100vh;
-  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .button {
